@@ -39,3 +39,5 @@ jobs:
       run: mvn --batch-mode deploy
       env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
+    - name: Tomcat deploy
+      run: curl -v -u ${{ secrets.TOM_USERNAME }}:${{ secrets.TOM_PASSWD }} -T /home/runner/work/mvn-b6/mvn-b6/target/flipkart.war 'http://34.211.190.58:8080/manager/text/deploy?path=/Welcome'
