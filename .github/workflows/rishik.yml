@@ -24,16 +24,14 @@ jobs:
         cache: maven
     - name : Build with Maven
       run: mvn -B package --file pom.xml
-
-          ######## Sonar Cloud Scan ########
-  Code-Quality-Check:
-    needs: Build
-  
-    runs-on: ubuntu-latest 
-    steps:
-      - uses: actions/checkout@v2
- #       if: ${{ job.status == 2 }}
-      - name: SonarCloud Scan
-        #run: mvn -B sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=pintu-gupta-github -Dsonar.projectKey=pintu-gupta-github
-        run: mvn -B sonar:sonar -Dsonar.projectKey=Java-Maven-Jacoco-Sonar -Dsonar.projectName=Java-Maven-Jacoco-Sonar -Dsonar.host.url=http://34.125.147.33:9000 -Dsonar.login=103e87043953a8c9564be3a5fbed3a26a6d084c2
-        #uses: sonarsource/sonarcloud-github-action@master
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    - name: SonarQube Quality Gate check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
