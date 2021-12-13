@@ -22,7 +22,7 @@
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/rooparishik/mvn-b6</url>
+      <url>https://maven.pkg.github.com/rooparishik/mvn-poc</url>
     </repository>
   </distributionManagement>
 </project>
