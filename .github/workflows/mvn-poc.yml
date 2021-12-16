@@ -37,7 +37,7 @@ jobs:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: execute py script
       run:  |
-        python poc_sonar.py
+        python poc_sonar_api.py
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Publish package
