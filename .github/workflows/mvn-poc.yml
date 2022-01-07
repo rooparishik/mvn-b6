@@ -47,9 +47,9 @@ jobs:
         Last_Name: Octocat
      #   Proxy: http://htttp-proxy.ntrs.com:443/
         
-   # - name: Login to Tanzu Cluster
-    #  run: |
-     #   tanzu login --endpoint 
+    - name: Login to Tanzu Cluster
+      run: |
+        tanzu login --endpoint https://mgmt-az1-1.system-1.tkgm.ntrs.com:6443 --name mgmt-az1-1-system-1 
    
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
