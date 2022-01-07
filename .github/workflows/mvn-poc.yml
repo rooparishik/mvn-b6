@@ -45,7 +45,7 @@ jobs:
         First_Name: SET TkG_SYSTEM_
         Middle_Name: The
         Last_Name: Octocat
-        Proxy: http://htttp-proxy.ntrs.com:443/
+     #   Proxy: http://htttp-proxy.ntrs.com:443/
         
    # - name: Login to Tanzu Cluster
     #  run: |
