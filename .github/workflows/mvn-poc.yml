@@ -38,6 +38,12 @@ jobs:
          ./install.sh
          tanzu version
          tanzu plugin list
+         
+    - name: Set env variable and proxy
+      env:
+        First_Name: SET TkG_SYSTEM_
+        Middle_Name: The
+        Last_Name: Octocat
    
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
