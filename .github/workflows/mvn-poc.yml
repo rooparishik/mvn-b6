@@ -40,11 +40,14 @@ jobs:
          tanzu plugin list
          
     - name: Set env variable and proxy
-      uses: Azure/setup-kubectl@v1
+     # uses: Azure/setup-kubectl@v1
       env:
-        First_Name: SET TkG_SYSTEM_
-        Middle_Name: The
-        Last_Name: Octocat
+       # First_Name: SET TkG_SYSTEM_
+       # Middle_Name: The
+       # Last_Name: Octocat
+       TKG_CUSTOM_IMAGE_REPOSITORY_SKIP_TLS_VERIFY=true
+       https_proxy=http://http-proxy.ntrs.com:443/
+      run: echo $TKG_CUSTOM_IMAGE_REPOSITORY_SKIP_TLS_VERIFY
      #   Proxy: http://htttp-proxy.ntrs.com:443/
         
     - name: Login to Tanzu Cluster
