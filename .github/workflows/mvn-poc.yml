@@ -43,8 +43,7 @@ jobs:
       env:
        TKG_CUSTOM_IMAGE_REPOSITORY_SKIP_TLS_VERIFY: true
        https_proxy: http://http-proxy.ntrs.com:443/
-      run: echo $TKG_CUSTOM_IMAGE_REPOSITORY_SKIP_TLS_VERIFY
-           echo $https_proxy
+      run: echo $TKG_CUSTOM_IMAGE_REPOSITORY_SKIP_TLS_VERIFY $https_proxy
  #   Proxy: http://htttp-proxy.ntrs.com:443/
         
     - name: Login to Tanzu Cluster
