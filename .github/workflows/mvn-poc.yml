@@ -49,17 +49,6 @@ jobs:
            tar zxvf "kustomize_v${KUSTOMIZE_VERSION}_${KUSTOMIZE_ARCHITECTURE}.tar.gz" -C "${BIN_DIR}"
            # Add permission for executable
            chmod +x "${BIN_DIR}/kustomize"
-    - name: Helm Installation
-      env:  
-         HELM_V2: 2.16.7
-      run: |
-         echo "downloading helm ${HELM_V2}" 
-         curl -sSL https://get.helm.sh/helm-v${HELM_V2}-linux-amd64.tar.gz 
-         tar zxvf helm-v${HELM_V2}-linux-amd64.tar.gz
-         mv linux-amd64/helm /usr/local/bin/helm 
-         rm -rf linux-amd64 
-         helm version --client
- 
     - name: Helm V3 Installation
       env:  
          HELM_V3: 3.2.1
