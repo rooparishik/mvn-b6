@@ -93,7 +93,7 @@ jobs:
         kubeseal --version
 
     - name: yq Installation
-      run:  echo "downloading yq" && curl -sL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \ -o /usr/local/bin/yq && chmod +x /usr/local/bin/yq && yq --version
+      run: wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\tar xz && mv ${BINARY} /usr/bin/yq
     - name: jq Installation
       run:  echo "downloading jq" && curl -sL https://github.com/stedolan/jq/releases/latest/download/jq-linux64 \ -o /usr/local/bin/jq && chmod +x /usr/local/bin/jq && jq --version
     - name: Tanzu Install
