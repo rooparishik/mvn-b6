@@ -51,9 +51,9 @@ jobs:
            chmod +x "${BIN_DIR}/kustomize"
     - name: Helm V3 Installation
       run:  |
-         curl -sSL https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz 
-         tar xzvf helm-v3.2.1-linux-amd64.tar.gz 
-         mv helm-v3.2.1-linux-amd64.tar.gz/helm /usr/local/bin/helmv3 
+         curl -sLO https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz 
+         tar xvf helm-v3.0.2-linux-amd64.tar.gz 
+         sudo mv linux-amd64/helm /usr/local/bin/
          helmv3 version
  
     - name: KubeVal Installation
