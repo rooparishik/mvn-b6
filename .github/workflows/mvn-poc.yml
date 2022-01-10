@@ -89,7 +89,7 @@ jobs:
     - name: Kubeseal Installation
       env:  
          KUBESEAL: 0.17.1
-      run: echo "downloading kubeseal ${KUBESEAL}" && curl -sLO https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL}/kubeseal-linux-amd64 \ -o /usr/local/bin/kubeseal && chmod +x /usr/local/bin/kubeseal && kubeseal --version
+      run: echo "downloading kubeseal ${KUBESEAL}" && curl -sLO https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.1/kubeseal-0.17.1-linux-arm.tar.gz \ -o /usr/local/bin/kubeseal && chmod +x /usr/local/bin/kubeseal && kubeseal --version
 
     - name: yq Installation
       run:  echo "downloading yq" && curl -sL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \ -o /usr/local/bin/yq && chmod +x /usr/local/bin/yq && yq --version
