@@ -34,7 +34,7 @@ jobs:
          chmod +x kubectl
          mkdir -p ~/.local/bin/kubectl
          mv ./kubectl ~/.local/bin/kubectl
-         echo kubectl version --client
+         echo $kubectl version --client
 
     - name: Tanzu Install
       run: |
