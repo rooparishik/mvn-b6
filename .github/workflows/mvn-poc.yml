@@ -36,16 +36,21 @@ jobs:
          mv ./kubectl ~/.local/bin/kubectl
          #kubectl version --client      
     - name: Install Kustomize 
+      env:
+          BIN_DIR: "$(pwd)/bin"
+# docs: https://github.com/pkgdeps/verify-checksum-cheatsheet
+          KUSTOMIZE_VERSION: 4.1.3
+          KUSTOMIZE_ARCHITECTURE: "linux_arm64"
       run: |
-         curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases
-         grep browser_download 
-         grep $opsys 
-         grep kustomize_kustomize 
-         head -n1 
-         cut -d '"' -f 4 
-         xargs curl -O -L
-         mv kustomize_kustomize.v*_${opsys}_amd64 kustomize
-         chmod u+x kustomize
+           curl -sLO "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_${KUSTOMIZE_ARCHITECTURE}.tar.gz"
+           curl -sL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/checksums.txt" -o kustomize.checksums.txt
+           # Verify the checksum
+           grep -e "kustomize_v${KUSTOMIZE_VERSION}_${KUSTOMIZE_ARCHITECTURE}.tar.gz$" kustomize.checksums.txt | _sha256sum -c
+           # Extract tar.gz to bin/
+           mkdir -p "${BIN_DIR}"
+           tar zxvf "kustomize_v${KUSTOMIZE_VERSION}_${KUSTOMIZE_ARCHITECTURE}.tar.gz" -C "${BIN_DIR}"
+           # Add permission for executable
+           chmod +x "${BIN_DIR}/kustomize"
     - name: Helm Installation
       env:  
          HELM_V2: 2.16.7
