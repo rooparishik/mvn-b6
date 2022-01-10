@@ -93,6 +93,9 @@ jobs:
         kubeseal --version
 
     - name: yq Installation
+      env: 
+       VERSION: v4.2.0 
+       BINARY: yq_linux_amd64
       run: wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\tar xz && mv ${BINARY} /usr/bin/yq
     - name: jq Installation
       run:  echo "downloading jq" && curl -sL https://github.com/stedolan/jq/releases/latest/download/jq-linux64 \ -o /usr/local/bin/jq && chmod +x /usr/local/bin/jq && jq --version
