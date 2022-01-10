@@ -54,7 +54,7 @@ jobs:
          curl -sLO https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz 
          tar xvf helm-v3.0.2-linux-amd64.tar.gz 
          sudo mv linux-amd64/helm /usr/local/bin/
-         helmv version
+         helm version
  
     - name: KubeVal Installation
       env:  
