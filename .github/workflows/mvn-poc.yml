@@ -99,7 +99,11 @@ jobs:
         sudo chmod 755 yq_linux_arm64 
         sudo mv yq_linux_arm64 /usr/bin/yq
     - name: jq Installation
-      run:  echo "downloading jq" && curl -sL https://github.com/stedolan/jq/releases/latest/download/jq-linux64 \ -o /usr/local/bin/jq && chmod +x /usr/local/bin/jq && jq --version
+      run: |
+        curl -sLO https://github.com/stedolan/jq/releases/latest/download/jq-linux64
+        sudo mv jq-linux64 /usr/local/bin/jq 
+        sudo chmod +x /usr/local/bin/jq 
+        jq --version
     - name: Tanzu Install
       run: |
          curl -H "Accept: application/vnd.github.v3.raw" \-L https://api.github.com/repos/vmware-tanzu/community-edition/contents/hack/get-tce-release.sh | \bash -s v0.9.1 linux
