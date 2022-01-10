@@ -26,9 +26,8 @@ jobs:
       run: mvn -B package --file pom.xml
     
     - name: Install Kubectl
-      env:
-         KUBECTL: 1.18.2
-      run: echo "downloading kubectl ${KUBECTL}" \ && curl -sL https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL}/bin/linux/amd64/kubectl \ -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl && kubectl version --client
+      run:
+         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     - name: Tanzu Install
       run: |
          curl -H "Accept: application/vnd.github.v3.raw" \-L https://api.github.com/repos/vmware-tanzu/community-edition/contents/hack/get-tce-release.sh | \bash -s v0.9.1 linux
