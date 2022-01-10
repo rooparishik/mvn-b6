@@ -59,7 +59,12 @@ jobs:
     - name: KubeVal Installation
       env:  
          KUBEVAL: 0.15.0
-      run:  echo "downloading kubeval ${KUBEVAL}" && curl -sL https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL}/kubeval-linux-amd64.tar.gz | \ tar xz && mv kubeval /usr/local/bin/kubeval && kubeval --version
+      run: |
+         echo "downloading kubeval ${KUBEVAL}" 
+         curl -sLO https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL}/kubeval-linux-amd64.tar.gz
+         tar xzvf kubeval-linux-amd64.tar.gz
+         mv kubeval /usr/local/bin/kubeval 
+         kubeval --version
 
     - name: Kubeaudit Installation 
       env:  
