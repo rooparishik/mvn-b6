@@ -36,12 +36,16 @@ jobs:
          mv ./kubectl ~/.local/bin/kubectl
          #kubectl version --client      
     - name: Install Kustomize 
-      env:  
-         KUSTOMIZE: 3.5.5
-      run: | 
-         echo "downloading kustomize ${KUSTOMIZE}" 
-         curl -sL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE}/kustomize_v${KUSTOMIZE}_linux_amd64.tar.gz
-         tar xz && mv kustomize /usr/local/bin/kustomize && kustomize version
+      run: |
+         curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases
+         grep browser_download 
+         grep $opsys 
+         grep kustomize_kustomize 
+         head -n1 
+         cut -d '"' -f 4 
+         xargs curl -O -L
+         mv kustomize_kustomize.v*_${opsys}_amd64 kustomize
+         chmod u+x kustomize
     - name: Helm Installation
       env:  
          HELM_V2: 2.16.7
