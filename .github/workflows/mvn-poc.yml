@@ -93,7 +93,7 @@ jobs:
         kubeseal --version
 
     - name: yq Installation
-      run: !
+      run: |
         curl -sLO https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_arm64.tar.gz
         tar -xvzf yq_linux_arm64.tar.gz 
         chmod 755 yq_linux_arm64 
